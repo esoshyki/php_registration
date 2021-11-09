@@ -50,3 +50,15 @@ pm_winnt:notice] [pid 10116:tid 168] AH00354: Child: Starting 64 worker threads.
 [Tue Nov 09 14:51:02.009676 2021] [core:notice] [pid 16544:tid 668] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
 [Tue Nov 09 14:51:02.043335 2021] [mpm_winnt:notice] [pid 16544:tid 668] AH00418: Parent: Created child process 17840
 [Tue Nov 09 14:51:02.529250 2021] [mpm_winnt:notice] [pid 17840:tid 600] AH00354: Child: Starting 64 worker threads.
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::352d:ac42:294a:82fd. Set the 'ServerName' directive globally to suppress this message
+[Tue Nov 09 20:05:40.323968 2021] [mpm_winnt:notice] [pid 13416:tid 780] AH00455: Apache/2.4.51 (Win64) PHP/8.0.12 configured -- resuming normal operations
+[Tue Nov 09 20:05:40.323968 2021] [mpm_winnt:notice] [pid 13416:tid 780] AH00456: Apache Lounge VS16 Server built: Oct  7 2021 16:27:02
+[Tue Nov 09 20:05:40.323968 2021] [core:notice] [pid 13416:tid 780] AH00094: Command line: 'C:\\Server\\Apache24\\bin\\httpd.exe -d C:/Server/Apache24'
+[Tue Nov 09 20:05:40.339540 2021] [mpm_winnt:notice] [pid 13416:tid 780] AH00418: Parent: Created child process 3768
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::352d:ac42:294a:82fd. Set the 'ServerName' directive globally to suppress this message
+AH00558: httpd.exe: Could not reliably determine the server's fully qualified domain name, using fe80::352d:ac42:294a:82fd. Set the 'ServerName' directive globally to suppress this message
+[Tue Nov 09 20:05:41.058291 2021] [mpm_winnt:notice] [pid 3768:tid 720] AH00354: Child: Starting 64 worker threads.
+[Tue Nov 09 21:22:12.298264 2021] [core:error] [pid 3768:tid 1260] (20024)The given path is misformatted or contained invalid characters: [client ::1:65520] AH00127: Cannot map GET /:1%20Access%20to%20fetch%20at%20'http://localhost/signup.php'%20from%20origin%20'http://localhost:9000'%20has%20been%20blocked%20by%20CORS%20policy:%20No%20'Access-Control-Allow-Origin'%20header%20is%20present%20on%20the%20requested%20resource.%20If%20an%20opaque%20response%20serves%20your%20needs,%20set%20the%20request's%20mode%20to%20'no-cors'%20to%20fetch%20the%20resource%20with%20CORS%20disabled. HTTP/1.1 to file
+[Wed Nov 10 00:11:28.656566 2021] [mpm_winnt:notice] [pid 13416:tid 780] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Wed Nov 10 00:11:30.661867 2021] [mpm_winnt:notice] [pid 3768:tid 720] AH00364: Child: All worker threads have exited.
+[Wed Nov 10 00:11:30.751942 2021] [mpm_winnt:notice] [pid 13416:tid 780] AH00430: Parent: Child process 3768 exited successfully.

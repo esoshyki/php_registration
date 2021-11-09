@@ -1,4 +1,5 @@
-<?php include('server.php') ?>
+<?php session_start() ?>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -17,22 +18,62 @@
       <div class="mb-3">
         <label for="loginInput" class="form-label">Login</label>
         <input type="text" name="login" class="form-control" id="loginInput" placeholder="Login">
+        <?php 
+            if (isset($_SESSION["login_error"])) {
+            echo '<div class="login_input_error">' . $_SESSION["login_error"] . '</div>';
+            unset($_SESSION["login_error"]);
+          } else {
+              echo "";
+          }
+        ?>
       </div>
       <div class="mb-3">
         <label for="passwordInput" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" id="passwordInput" placeholder="Password">
+        <?php 
+            if (isset($_SESSION["password_error"])) {
+            echo '<div class="login_input_error">' . $_SESSION["password_error"] . '</div>';
+            unset($_SESSION["password_error"]);
+          } else {
+              echo "";
+          }
+        ?>
       </div>
       <div class="mb-3">
         <label for="passwordConfirmInput" class="form-label">Confirm Password</label>
-        <input type="password" name="passwordConfirm" class="form-control" id="passwordConfirmInput" placeholder="Confirm Password">
+        <input type="password" name="confirm_password" class="form-control" id="passwordConfirmInput" placeholder="Confirm Password">
+        <?php 
+            if (isset($_SESSION["confirm_password_error"])) {
+            echo '<div class="login_input_error">' . $_SESSION["confirm_password_error"] . '</div>';
+            unset($_SESSION["confirm_password_error"]);
+          } else {
+              echo "";
+          }
+        ?>
       </div>
       <div class="mb-3">
         <label for="emailInput" class="form-label">Email</label>
         <input type="email" name="email" class="form-control" id="emailInput" placeholder="Email">
+        <?php 
+            if (isset($_SESSION["email_error"])) {
+            echo '<div class="login_input_error">' . $_SESSION["email_error"] . '</div>';
+            unset($_SESSION["email_error"]);
+          } else {
+              echo "";
+          }
+        ?>
       </div>
       <div class="mb-3">
         <label for="nameInput" class="form-label">Name</label>
         <input type="text" name="name" class="form-control" id="nameInput" placeholder="Name">
+        <?php 
+            if (isset($_SESSION["name_error"])) {
+            echo '<div class="login_input_error">' . $_SESSION["name_error"] . '</div>';
+            unset($_SESSION["name_error"]);
+          } else {
+              echo "";
+          }
+        ?>
       </div>
       <div class="mb-3">
         <button type="submit" class="btn btn-primary" id="sentButton">Send</button>
@@ -40,5 +81,6 @@
     </form>
     </main>
   </div>
+  <script src="./js/signup.js"></script>
 </body>
 </html>
