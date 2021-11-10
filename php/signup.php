@@ -4,8 +4,10 @@
 
   }
 
+  $fields = ['login', 'password', 'confirm_password', 'email', 'name'];
+
   require('form.validator.php');
-  $validation = new FormValidator($_POST);
+  $validation = new FormValidator($_POST, $fields);
   $ERRORS = $validation->validateForm();
 
   if (!empty($ERRORS)) {

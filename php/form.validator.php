@@ -3,18 +3,23 @@
 
     private $form_data;
     private $errors = [];
-    private static $fields = ["login", "password", "confirm_password", "email", "name"];
+    private $fields;
 
-    public function __construct($post_data) {
+    public function __construct($post_data, $fields) {
       if (isset($post_data)) {
         $this->form_data = $post_data;
       } else {
         $this->form_data = [];
       }
+      if (isset($fields)) {
+        $this->fields = $fields;
+      } else {
+        $this->fields = [];
+      }
     }
 
     public function validateForm() {
-      foreach (self::$fields as $field) {
+      foreach ($this->fields as $field) {
         if (!array_key_exists($field, $this->form_data)) {
           $this->addError($field, "$field is required field");
         } else {
@@ -41,6 +46,10 @@
     }
 
     private function validatePasswords() {
+
+      if (!array_key_exists('confirm_password', $this->fields)) {
+        return;
+      }
 
       if (array_key_exists('password', $this->errors) && 
           array_key_exists('confirm_password', $this->errors)
