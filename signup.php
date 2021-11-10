@@ -12,10 +12,10 @@
 <body>
   <div class="container">
     <header>
-      <h1>Registration</h1>
+      <h1>Signup</h1>
     </header>
     <main>
-      <form id="form" method="POST" action="signup.php">
+      <form id="form">
       <div class="mb-3">
         <label for="loginInput" class="form-label">Login</label>
         <input type="text" name="login" class="form-control" id="loginInput" placeholder="Login">
