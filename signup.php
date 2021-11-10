@@ -27,7 +27,7 @@
       </div>
       <div class="mb-3">
         <label for="emailInput" class="form-label">Email</label>
-        <input type="email" name="email" class="form-control" id="emailInput" placeholder="Email">
+        <input type="text" name="email" class="form-control" id="emailInput" placeholder="Email">
         <p class="email_error form_error hidden"></p>
       </div>
       <div class="mb-3">

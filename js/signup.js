@@ -20,7 +20,6 @@ form.addEventListener("submit", async e => {
   });
   if (response.status === 401) {
     const errors = await response.json();
-    console.log(errors);
     formControl.showErrors(errors);
   } else if (response.status === 200) {
     console.log('ok')

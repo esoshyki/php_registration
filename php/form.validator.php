@@ -31,6 +31,7 @@
 
       $this->validateLogin();
       $this->validatePasswords();
+      $this->validatePassword();
       $this->validateEmail();
       $this->validateName();
 
@@ -45,18 +46,29 @@
       }
     }
 
+    private function validatePassword() {
+
+      $password = $this->form_data['password'];
+
+      if (empty($password)) {
+        return;
+      }
+
+      if (!preg_match('/(?=.*[a-z])/', $password)) {
+        $this->addError('password', 'Login must contain at least one lowercase letter.');
+      }
+      if (!preg_match('/(?=.*[A-Z])/', $password)) {
+        $this->addError('password', 'Login must contain at least one uppercase letter.');
+      }
+      if (!preg_match('/(?=.*[0-9])/', $password)) {
+        $this->addError('password', 'Login must contain at least one number.');
+      }
+      if (!preg_match('/(?=.{6,})/', $password)) {
+        $this->addError('password', 'Login must consist of at least six symbols.');
+      }
+    }
+
     private function validatePasswords() {
-
-      if (!array_key_exists('confirm_password', $this->fields)) {
-        return;
-      }
-
-      if (array_key_exists('password', $this->errors) && 
-          array_key_exists('confirm_password', $this->errors)
-        ) {
-        return;
-      }
-
       $password = $this->form_data['password'];
       $confirm_password = $this->form_data['confirm_password'];
 
@@ -64,15 +76,36 @@
         $this->addError('password', 'passwords doesn\'t match');
         $this->addError('confirm_password', 'passwords doesn\'t match');
       }
-
     }
 
     private function validateEmail() {
+      
+      $email = trim($this->form_data['email']);
 
+      if (empty($email)) {
+        return;
+      }
+
+      if (!preg_match('/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/', $email)) {
+        $this->addError('email', 'Email must be in email format');
+      }
     }
 
     private function validateName() {
 
+      $name = trim($this->form_data['name']);
+
+      if (empty($name)) {
+        return;
+      }
+      
+      if (!preg_match('/(?=.{2,})/', $name)) {
+        $this->addError('name', 'name must be two or more symbols');
+      }
+
+      if (!preg_match('/^[a-z A-Z]+$/', $name)) {
+        $this->addError('name', 'name must consist of only letters');
+      }
     }
 
     private function addError($key, $message) {

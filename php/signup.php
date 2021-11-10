@@ -1,12 +1,13 @@
 <?php
 
-  if (empty($__POST)) {
+  require('auth.service.php');
+  require('form.validator.php');
+  if (empty($_POST)) {
 
   }
 
   $fields = ['login', 'password', 'confirm_password', 'email', 'name'];
-
-  require('form.validator.php');
+  
   $validation = new FormValidator($_POST, $fields);
   $ERRORS = $validation->validateForm();
 
@@ -16,7 +17,16 @@
     echo json_encode($ERRORS);
     exit;
   } else {
-    http_response_code(200);
+    
+    $auth = new AuthService;
+    $created = $auth->createUser($_POST);
+     // if ($created["error"]) {
+    //   http_response_code(401);
+    //   $errors = array(
+    //     "submit_error" => $created["error"]
+    //   )
+    // }
+    echo json_encode($ERRORS);
     exit;
   }
     

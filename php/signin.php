@@ -1,6 +1,6 @@
 <?php
 
-  if (empty($__POST)) {
+  if (empty($_POST)) {
 
   }
 
@@ -16,6 +16,8 @@
     echo json_encode($ERRORS);
     exit;
   } else {
+    require('auth.service.php');
+    $auth = new AuthService;
     http_response_code(200);
     exit;
   }
