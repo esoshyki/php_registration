@@ -1,5 +1,14 @@
 const form = document.getElementById("form");
-const loginInput = document.getElementById("loginInput");
+
+const fields = [
+  "login",
+  "password",
+  "confirm_password",
+  "email",
+  "name"
+];
+
+const formControl = new FormControl(fields);
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
@@ -9,13 +18,15 @@ form.addEventListener("submit", async e => {
     mode: "no-cors",
     body: new FormData(form)
   });
-  if (response.status === 200) {
+  if (response.status === 401) {
+    const errors = await response.json();
+    console.log(errors);
+    formControl.showErrors(errors);
+  } else if (response.status === 200) {
     console.log('ok')
-  };
-  if (response.status === 400) {
-    console.log('bad');
   }
-
 });
+
+form.addEventListener("keydown", ({target}) => formControl.hideError(target.name));
 
 

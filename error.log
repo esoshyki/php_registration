@@ -62,3 +62,9 @@ AH00558: httpd.exe: Could not reliably determine the server's fully qualified do
 [Wed Nov 10 00:11:28.656566 2021] [mpm_winnt:notice] [pid 13416:tid 780] AH00422: Parent: Received shutdown signal -- Shutting down the server.
 [Wed Nov 10 00:11:30.661867 2021] [mpm_winnt:notice] [pid 3768:tid 720] AH00364: Child: All worker threads have exited.
 [Wed Nov 10 00:11:30.751942 2021] [mpm_winnt:notice] [pid 13416:tid 780] AH00430: Parent: Child process 3768 exited successfully.
+[Wed Nov 10 08:25:45.519883 2021] [mpm_winnt:notice] [pid 3156:tid 740] AH00455: Apache/2.4.51 (Win64) PHP/8.0.12 configured -- resuming normal operations
+[Wed Nov 10 08:25:45.519883 2021] [mpm_winnt:notice] [pid 3156:tid 740] AH00456: Apache Lounge VS16 Server built: Oct  7 2021 16:27:02
+[Wed Nov 10 08:25:45.519883 2021] [core:notice] [pid 3156:tid 740] AH00094: Command line: 'C:\\Apache24\\bin\\httpd.exe -d C:/Apache24'
+[Wed Nov 10 08:25:45.532882 2021] [mpm_winnt:notice] [pid 3156:tid 740] AH00418: Parent: Created child process 9788
+[Wed Nov 10 08:25:45.946061 2021] [mpm_winnt:notice] [pid 9788:tid 600] AH00354: Child: Starting 64 worker threads.
+[Wed Nov 10 10:22:51.558890 2021] [php:error] [pid 9788:tid 1148] [client ::1:61876] script 'D:/programming/PHP_REG/form.validation.php' not found or unable to stat

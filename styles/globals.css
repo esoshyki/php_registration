@@ -1,0 +1,6 @@
+@import url(./partials/colors.css);
+
+.form_error {
+  color: var(--error-color);
+  font-size: 0.9rem;
+}
