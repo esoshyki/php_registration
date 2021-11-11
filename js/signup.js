@@ -18,14 +18,16 @@ form.addEventListener("submit", async e => {
     mode: "no-cors",
     body: new FormData(form)
   });
-  if (response.status === 401) {
-    const errors = await response.json();
-    formControl.showErrors(errors);
-  } else if (response.status === 200) {
-    console.log('ok')
+  if (response.status === 200) {
+    console.log(await response.text());
+    return;
   }
+  const result =await response.json(); 
+  console.log(result);
+  response.status === 401 ? formControl.showErrors(result) : formControl.showSuccess(result.success);
 });
 
 form.addEventListener("keydown", ({target}) => formControl.hideError(target.name));
+form.addEventListener("keydown", () => formControl.hideError("submit"));
 
 

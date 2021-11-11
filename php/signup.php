@@ -1,5 +1,13 @@
 <?php
 
+  // $default = array(
+  //   "name" => "Bugaga",
+  //   "login" => "Bugagaga",
+  //   "password" => "Bubench1k1",
+  //   "confirm_password" => "Bubench1k1",
+  //   "email" => "bugaga@mail.com"
+  // );
+
   require('auth.service.php');
   require('form.validator.php');
   if (empty($_POST)) {
@@ -12,7 +20,6 @@
   $ERRORS = $validation->validateForm();
 
   if (!empty($ERRORS)) {
-    header('Content-Type: application/json');
     http_response_code(401);
     echo json_encode($ERRORS);
     exit;
@@ -20,14 +27,18 @@
     
     $auth = new AuthService;
     $created = $auth->createUser($_POST);
-     // if ($created["error"]) {
-    //   http_response_code(401);
-    //   $errors = array(
-    //     "submit_error" => $created["error"]
-    //   )
-    // }
-    echo json_encode($ERRORS);
-    exit;
+     if (isset($created["error"])) {
+      http_response_code(401);
+      $ERRORS = array(
+        "submit" => $created["error"]
+      );
+      echo json_encode($ERRORS);
+      exit;
+    } else {
+      http_response_code(201);
+      echo json_encode($created);
+      exit;
+    }
   }
     
   ?>
