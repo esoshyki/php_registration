@@ -1,0 +1,5 @@
+Options +SymLinksIfOwnerMatch
+Options -Indexes
+<Files "*.json">  
+  Require all denied
+</Files>

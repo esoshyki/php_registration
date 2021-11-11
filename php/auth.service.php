@@ -1,14 +1,5 @@
 <?php
-
-  require("./logger.php");
-
-  $initalUsers = array(   
-    'login' => "shykiaasa",
-    'password' => "password",
-    'email' => "shyki@email.com",
-    'name' => "userName"
-  );
-
+  session_start();
   class AuthService {
 
     public function createUser($userData) {
@@ -25,6 +16,7 @@
       if (isset($userIdx)) {
         return array("error" => "The user exists");
       } else {
+
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $users = $this->getUsers();
@@ -55,6 +47,11 @@
 
     }
 
+    private function authorizeUser($user) {
+      $_SESSION["userName"] = $user->userName;
+      $_SESSION["userLogin"] = $user->login;     
+    }
+
     private function findUser($login) {
       $users = $this->getUsers();
       
@@ -69,7 +66,7 @@
       }
     }
 
-    public function authorizeUser($login, $password) {
+    public function signIn($login, $password) {
       $user = $this->findUser($login);
 
       if ($user === NULL) {
@@ -77,6 +74,7 @@
       }
 
       if (password_verify($password, $user->password)) {
+        $this->authorizeUser($user);
         return array("success" => "Authorized");
       } else {
         return array("error" => "Incorrect password");   
@@ -100,10 +98,5 @@
       }
       return NULL;
     }
-
   }
-
-  // $auth = new AuthService;
-  // $auth->createUser($initalUsers);
-
 ?>

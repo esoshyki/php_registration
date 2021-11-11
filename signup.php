@@ -5,7 +5,7 @@
 <body>
   <div class="container">
     <?php 
-      include('./templates/header.html');
+      include('./templates/header.php');
       echo '<h1>Signup</h1>';
     ?>
     <main>

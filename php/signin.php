@@ -13,7 +13,7 @@
     exit;
   } else {
     $auth = new AuthService;
-    $authorized = $auth->authorizeUser($_POST['login'], $_POST['password']);
+    $authorized = $auth->signIn($_POST['login'], $_POST['password']);
     if (isset($authorized["error"])) {
       http_response_code(401);
       echo json_encode(array(

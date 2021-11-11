@@ -2,6 +2,18 @@ class FormControl {
   constructor(_fields) {
     this.fields = _fields;
 
+    this.redirect = ({time, path}) => {
+      const timerNode = document.querySelector('.redirect_timer');
+      if (timerNode) {
+        timerNode.innerHTML = `Redirecting in ${time} s`;
+        if (time >= 1) {
+          setTimeout(() => this.redirect({time: time - 1, path}), 1000)
+        } else {
+          location.replace(path);
+        }
+      };
+    };
+
     this.showErrors = (errors = {}) => {
       Object.entries(errors).map(([field, message]) => {
         const className = `${field}_error`;
@@ -20,6 +32,7 @@ class FormControl {
         succesNode.innerText = success;
         succesNode.classList.remove("hidden");
       };
+      this.redirect({time: 3, path: "./home.php"});
     };
 
     this.showMessage = (className, message) => {

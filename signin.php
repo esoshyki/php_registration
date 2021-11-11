@@ -5,7 +5,7 @@
 <body>
   <div class="container">
   <?php 
-    include('./templates/header.html');
+    include('./templates/header.php');
     echo '<h1>Sign</h1>';
     ?>
     <main>
@@ -26,9 +26,8 @@
       <div class="alert alert-success hidden" role="alert"></div>
       <div class="alert alert-danger submit_error hidden" role="alert"></div>
     </form>
+    <div class="redirect_timer"></div>
     </main>
   </div>
-  <script src="./js/form.control.js"></script>
-  <script src="./js/signin.js"></script>
 </body>
 </html>

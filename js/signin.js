@@ -22,6 +22,7 @@ form.addEventListener("submit", async e => {
   const result =await response.json(); 
   console.log(result);
   response.status === 401 ? formControl.showErrors(result) : formControl.showSuccess(result.success);
+  formControl.changeRedirectTimer({time: 3, path: "./home.php"});
 });
 
 form.addEventListener("keydown", ({target}) => formControl.hideError(target.name));
