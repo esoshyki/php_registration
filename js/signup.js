@@ -1,6 +1,5 @@
-const form = document.getElementById("form");
 
-const fields = [
+const signupFields = [
   "login",
   "password",
   "confirm_password",
@@ -8,26 +7,36 @@ const fields = [
   "name"
 ];
 
-const formControl = new FormControl(fields);
+const signupFormControl = new FormControl(signupFields);
 
-form.addEventListener("submit", async e => {
-  e.preventDefault();
+const signup = async (form) => {
 
-  const response  = await fetch("/php/signup", {
+  const response  = await fetch("/php/signup/", {
     method: "POST",
     mode: "no-cors",
     body: new FormData(form)
   });
+
   if (response.status === 200) {
     console.log(await response.text());
     return;
   }
   const result =await response.json(); 
   console.log(result);
-  response.status === 401 ? formControl.showErrors(result) : formControl.showSuccess(result.success);
+  response.status === 401 ? signupFormControl.showErrors(result) : signupFormControl.showSuccess(result.success);
+  signupFormControl.redirect({
+    time: 3, path: "/home"
+  })
+};
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("signup-form");
+  form.addEventListener("submit", (e) => {e.preventDefault(); signup(form)});
+  form.addEventListener("keydown", ({target}) => signupFormControl.hideError(target.name));
+  form.addEventListener("keydown", () => signupFormControl.hideError("submit"));
 });
 
-form.addEventListener("keydown", ({target}) => formControl.hideError(target.name));
-form.addEventListener("keydown", () => formControl.hideError("submit"));
+
 
 

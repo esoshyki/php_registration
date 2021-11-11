@@ -1,5 +1,7 @@
+const logoutFormControl = new FormControl([]);
+
 const logout = async () => {
-  console.log('logout');
+  
   const response  = await fetch("/php/logout", {
     method: "GET",
     mode: "no-cors",
@@ -7,7 +9,7 @@ const logout = async () => {
 
   if (response.status === 200) {
     console.log(await response.text());
-    formControl.redirect({
+    logoutFormControl.redirect({
       time: 3, path: "/home"
     })
   } else {
@@ -15,8 +17,12 @@ const logout = async () => {
   }
 };
 
-const logoutButton = document.querySelector('.logout_button');
+document.addEventListener("DOMContentLoaded", () => {
+  const logoutButton = document.querySelector('.logout_button');
 
-if (logoutButton) {
-  logoutButton.addEventListener("click", logout);
-};
+  if (logoutButton) {
+    logoutButton.addEventListener("click", logout);
+  };
+  
+});
+

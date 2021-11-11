@@ -19,4 +19,5 @@
       </div>
     <?  } ?>
   </nav>
+  <script type="module" src="../js/logout.js"></script>
 </header>
