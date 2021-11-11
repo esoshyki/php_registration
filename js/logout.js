@@ -1,5 +1,6 @@
 const logout = async () => {
-  const response  = await fetch("/php/logout.php", {
+  console.log('logout');
+  const response  = await fetch("/php/logout", {
     method: "GET",
     mode: "no-cors",
   });
@@ -7,7 +8,7 @@ const logout = async () => {
   if (response.status === 200) {
     console.log(await response.text());
     formControl.redirect({
-      time: 3, path: "/home.php"
+      time: 3, path: "/home"
     })
   } else {
     console.log(await response.text());

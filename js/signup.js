@@ -13,7 +13,7 @@ const formControl = new FormControl(fields);
 form.addEventListener("submit", async e => {
   e.preventDefault();
 
-  const response  = await fetch("/php/signup.php", {
+  const response  = await fetch("/php/signup", {
     method: "POST",
     mode: "no-cors",
     body: new FormData(form)

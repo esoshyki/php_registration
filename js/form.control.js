@@ -32,7 +32,7 @@ class FormControl {
         succesNode.innerText = success;
         succesNode.classList.remove("hidden");
       };
-      this.redirect({time: 3, path: "./home.php"});
+      this.redirect({time: 3, path: "/home"});
     };
 
     this.showMessage = (className, message) => {

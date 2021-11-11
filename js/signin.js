@@ -10,7 +10,7 @@ const formControl = new FormControl(fields);
 form.addEventListener("submit", async e => {
   e.preventDefault();
 
-  const response  = await fetch("/php/signin.php", {
+  const response  = await fetch("/php/signin/", {
     method: "POST",
     mode: "no-cors",
     body: new FormData(form)  
@@ -22,7 +22,7 @@ form.addEventListener("submit", async e => {
   const result =await response.json(); 
   console.log(result);
   response.status === 401 ? formControl.showErrors(result) : formControl.showSuccess(result.success);
-  formControl.changeRedirectTimer({time: 3, path: "./home.php"});
+  formControl.changeRedirectTimer({time: 3, path: "./home"});
 });
 
 form.addEventListener("keydown", ({target}) => formControl.hideError(target.name));
