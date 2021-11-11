@@ -20,7 +20,11 @@ const signin = async (form) => {
     return;
   }
   const result =await response.json(); 
-  response.status === 401 ? signinFormControl.showErrors(result) : signinFormControl.showSuccess(result.success);
+  if (response.status === 401) {
+    return signinFormControl.showErrors(result);
+  };
+  
+  signinFormControl.showSuccess(result.success);
   signinFormControl.redirect({
     time: 3, path: "/home"
   })

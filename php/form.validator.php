@@ -41,7 +41,7 @@
         $this->validateEmail();
       }
 
-      if (isset($this->name)) {
+      if (isset($this->userName)) {
         $this->validateName();
       }   
 
@@ -103,18 +103,18 @@
 
     private function validateName() {
 
-      $name = trim($this->form_data['name']);
+      $userName = trim($this->form_data['userName']);
 
-      if (empty($name)) {
+      if (empty($userName)) {
         return;
       }
       
-      if (!preg_match('/(?=.{2,})/', $name)) {
-        $this->addError('name', 'name must be two or more symbols');
+      if (!preg_match('/(?=.{2,})/', $userName)) {
+        $this->addError('userName', 'User name must be two or more symbols');
       }
 
-      if (!preg_match('/^[a-z A-Z]+$/', $name)) {
-        $this->addError('name', 'name must consist of only letters');
+      if (!preg_match('/^[a-z A-Z]+$/', $userName)) {
+        $this->addError('userName', 'User name must consist of only letters');
       }
     }
 

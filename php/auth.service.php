@@ -4,32 +4,19 @@
 
     public function createUser($userData) {
 
-      [
-        'login' => $login,
-        'password' => $password,
-        'email' => $email,
-        'name' => $userName
-      ] = $userData;
+      require('./User.php');
+      $newUser = new User($userData);
 
-      $userIdx = $this->findUserIndex($login, $email);
+      $userIdx = $this->findUserIndex($newUser->login, $newUser->email);
 
       if (isset($userIdx)) {
         return array("error" => "The user exists");
       } else {
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
         $users = $this->getUsers();
-
-        $newUser = array (
-          "login" => $login,
-          "password" => $hashedPassword,
-          "userName" => $userName,
-          "email" => $email,
-        );
-
-        $users[] = $newUser;
-
+        $newUserData = $newUser->getUserData();
+        $users[] = $newUserData;
         $jsonData = json_encode($users);
 
         file_put_contents('./users.json', $jsonData);
@@ -40,11 +27,27 @@
     }
 
     public function deleteUser($login, $email) {
-
+      $users = $this->getUsers();
+      $newUsers = array_filter($users, function ($user) use($login, $email)) {
+        return $user->login !== $login && $user->email !== $email;
+      }
+      $jsonData = json_encode($users);
+      return file_put_contents('./users.json', $jsonData);    
     }
 
-    public function updateUser($login, $email) {
+    public function updateUser($newUserData) {
+      $users = $this->getUsers();
+      [
+        "login" => $login,
+        "email" => $email
+      ] = $newUserData;
+      $userIndex = $this->findUserIndex($login, $email);
 
+      if (isset($userIndex)) {
+        $users[$userIndex] = $newUserData;
+      }
+      $jsonData = json_encode($users);
+      return file_put_contents('./users.json', $jsonData);    
     }
 
     private function authorizeUser($user) {

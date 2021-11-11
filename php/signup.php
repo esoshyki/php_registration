@@ -2,7 +2,7 @@
   require('form.validator.php');
   require('auth.service.php');
 
-  $fields = ['login', 'password', 'confirm_password', 'email', 'name'];
+  $fields = ['login', 'password', 'confirm_password', 'email', 'userName'];
   
   $validation = new FormValidator($_POST, $fields);
   $ERRORS = $validation->validateForm();

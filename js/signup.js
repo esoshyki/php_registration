@@ -23,10 +23,15 @@ const signup = async (form) => {
   }
   const result =await response.json(); 
   console.log(result);
-  response.status === 401 ? signupFormControl.showErrors(result) : signupFormControl.showSuccess(result.success);
+
+  if (response.status === 401) {
+    return signupFormControl.showErrors(result);
+  };
+  
+  signupFormControl.showSuccess(result.success);
   signupFormControl.redirect({
     time: 3, path: "/home"
-  })
+  });
 };
 
 

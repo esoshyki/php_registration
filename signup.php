@@ -32,8 +32,8 @@
         </div>
         <div class="mb-3">
           <label for="nameInput" class="form-label">Name</label>
-          <input type="text" name="name" class="form-control" id="nameInput" placeholder="Name">
-          <p class="name_error form_error hidden"></p>
+          <input type="text" name="userName" class="form-control" id="nameInput" placeholder="Name">
+          <p class="userName_error form_error hidden"></p>
         </div>
         <div class="mb-3">
           <button type="submit" class="btn btn-primary" id="sentButton">Send</button>
