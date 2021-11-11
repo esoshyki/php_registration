@@ -30,10 +30,20 @@
       }
 
       $this->validateLogin();
-      $this->validatePasswords();
+
+      if (isset($this->confirm_password)) {
+        $this->validatePasswords();
+      }
+
       $this->validatePassword();
-      $this->validateEmail();
-      $this->validateName();
+
+      if (isset($this->email)) {
+        $this->validateEmail();
+      }
+
+      if (isset($this->name)) {
+        $this->validateName();
+      }   
 
       return $this->errors;
     }

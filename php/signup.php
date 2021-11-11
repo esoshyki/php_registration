@@ -1,18 +1,7 @@
 <?php
 
-  // $default = array(
-  //   "name" => "Bugaga",
-  //   "login" => "Bugagaga",
-  //   "password" => "Bubench1k1",
-  //   "confirm_password" => "Bubench1k1",
-  //   "email" => "bugaga@mail.com"
-  // );
-
   require('auth.service.php');
   require('form.validator.php');
-  if (empty($_POST)) {
-
-  }
 
   $fields = ['login', 'password', 'confirm_password', 'email', 'name'];
   

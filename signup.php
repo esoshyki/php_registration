@@ -38,12 +38,8 @@
       <div class="mb-3">
         <button type="submit" class="btn btn-primary" id="sentButton">Send</button>
       </div>
-      <div class="alert alert-success hidden" role="alert">
-        
-      </div>
-      <div class="alert alert-danger submit_error hidden" role="alert">
-        
-      </div>
+      <div class="alert alert-success hidden" role="alert"></div>
+      <div class="alert alert-danger submit_error hidden" role="alert"></div>
     </form>
     </main>
   </div>

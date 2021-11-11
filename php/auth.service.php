@@ -55,8 +55,33 @@
 
     }
 
-    public function authorizeUser($login, $password) {
+    private function findUser($login) {
+      $users = $this->getUsers();
+      
+      $findedUsers = array_filter($users, function($user) use ($login) {
+        return $user->login === "$login";
+      });
 
+      if (count($findedUsers) === 0) {
+        return NULL;
+      } else {
+        return $findedUsers[0];
+      }
+    }
+
+    public function authorizeUser($login, $password) {
+      $user = $this->findUser($login);
+
+      if ($user === NULL) {
+        return array("error" => "User not found");
+      }
+
+      if (password_verify($password, $user->password)) {
+        return array("success" => "Authorized");
+      } else {
+        return array("error" => "Incorrect password");   
+      }
+   
     }
 
     private function getUsers() {

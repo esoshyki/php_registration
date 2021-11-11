@@ -4,20 +4,14 @@ class FormControl {
 
     this.showErrors = (errors = {}) => {
       Object.entries(errors).map(([field, message]) => {
-        const errorNode = document.querySelector(`.${field}_error`)
-        if (errorNode) {
-          errorNode.innerText = message;
-          errorNode.classList.remove("hidden");
-        };
+        const className = `${field}_error`;
+        this.showMessage(className, message)
       });
     };
 
     this.hideError = (field) => {
-      const errorNode = document.querySelector(`.${field}_error`);
-      if (errorNode) {
-        errorNode.innerText = "";
-        errorNode.classList.add("hidden");
-      };
+      const className = `${field}_error`;
+      this.hideMessage(className);
     };
 
     this.showSuccess = success => {
@@ -25,6 +19,22 @@ class FormControl {
       if (succesNode) {
         succesNode.innerText = success;
         succesNode.classList.remove("hidden");
+      };
+    };
+
+    this.showMessage = (className, message) => {
+      const node = document.querySelector(`.${className}`);
+      if (node) {
+        node.innerText = message;
+        node.classList.remove("hidden");
+      };
+    };
+
+    this.hideMessage = (className) => {
+      const node = document.querySelector(`.${className}`);
+      if (node) {
+        node.innerText = "";
+        node.classList.add("hidden");
       };
     };
   };
