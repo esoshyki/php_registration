@@ -15,19 +15,25 @@ const signin = async (form) => {
     body: new FormData(form)
   });
 
+  console.log(response.status);
   if (response.status === 200) {
-    console.log(await response.text());
+    signinFormControl.showSuccess("Logged in");
+
+    signinFormControl.redirect({
+      time: 3, path: "/home"
+    });
     return;
   }
-  const result =await response.json(); 
-  if (response.status === 401) {
-    return signinFormControl.showErrors(result);
+
+  const errors =await response.json(); 
+
+  if (response.status === 400) {
+    return signinFormControl.showErrors(errors);
   };
-  
-  signinFormControl.showSuccess(result.success);
-  signinFormControl.redirect({
-    time: 3, path: "/home"
-  })
+
+  if (response.status === 404) {
+    return signinFormControl.showMessage("submit_error", errors?.[0].message);
+  };
 };
 
 document.addEventListener("DOMContentLoaded", () => {

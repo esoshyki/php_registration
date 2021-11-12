@@ -18,22 +18,24 @@ const signup = async (form) => {
   });
 
   if (response.status === 200) {
-    console.log(await response.text());
+    signupFormControl.showSuccess("User has been created");
+
+    signupFormControl.redirect({
+      time: 3, path: "/home"
+    });
     return;
   }
-  const result =await response.json(); 
-  console.log(result);
+  const errors =await response.json(); 
 
-  if (response.status === 401) {
-    return signupFormControl.showErrors(result);
+  if (response.status === 400) {
+    return signupFormControl.showErrors(errors);
   };
-  
-  signupFormControl.showSuccess(result.success);
-  signupFormControl.redirect({
-    time: 3, path: "/home"
-  });
-};
 
+  if (response.status === 500) {
+    return signupFormControl.showMessage("submit_error", errors?.[0].message);
+  }
+
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("signup-form");

@@ -1,32 +1,12 @@
 <?php
-  require('form.validator.php');
-  require('auth.service.php');
 
-  $fields = ['login', 'password', 'confirm_password', 'email', 'userName'];
-  
-  $validation = new FormValidator($_POST, $fields);
-  $ERRORS = $validation->validateForm();
-
-  if (!empty($ERRORS)) {
-    http_response_code(401);
-    echo json_encode($ERRORS);
+  $headers = getallheaders();
+  if (!($headers['Sec-Fetch-Mode'] === 'no-cors')) {
     exit;
-  } else {
-    
-    $auth = new AuthService;
-    $created = $auth->createUser($_POST);
-     if (isset($created["error"])) {
-      http_response_code(401);
-      $ERRORS = array(
-        "submit" => $created["error"]
-      );
-      echo json_encode($ERRORS);
-      exit;
-    } else {
-      http_response_code(201);
-      echo json_encode($created);
-      exit;
-    }
   }
-    
+
+  require ('./auth/Auth.php');
+
+  $auth = new Auth;
+  $auth->signUp();
   ?>

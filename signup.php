@@ -22,8 +22,8 @@
         </div>
         <div class="mb-3">
           <label for="passwordConfirmInput" class="form-label">Confirm Password</label>
-          <input type="password" name="confirm_password" class="form-control" id="passwordConfirmInput" placeholder="Confirm Password">
-          <p class="confirm_password_error form_error hidden"></p>
+          <input type="password" name="confirmPassword" class="form-control" id="passwordConfirmInput" placeholder="Confirm Password">
+          <p class="confirmPassword_error form_error hidden"></p>
         </div>
         <div class="mb-3">
           <label for="emailInput" class="form-label">Email</label>

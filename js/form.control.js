@@ -14,11 +14,12 @@ class FormControl {
       };
     };
 
-    this.showErrors = (errors = {}) => {
-      Object.entries(errors).map(([field, message]) => {
-        const className = `${field}_error`;
+    this.showErrors = (errors = []) => {
+      errors.map(({type, message}) => {
+        const className = `${type}_error`; 
+        console.log(className);
         this.showMessage(className, message)
-      });
+      })
     };
 
     this.hideError = (field) => {
