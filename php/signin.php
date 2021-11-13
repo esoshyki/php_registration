@@ -1,9 +1,7 @@
 <?php
-  $headers = getallheaders();
-  if (!($headers['Sec-Fetch-Mode'] === 'no-cors')) {
-    exit;
-  }
-
+  session_start();
+  require('./security/disableGetRequest.php');
+  
   require ('./auth/Auth.php');
 
   $auth = new Auth;

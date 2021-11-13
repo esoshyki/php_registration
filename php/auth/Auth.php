@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  require('./security/disableGetRequest.php');
   require ('FormValidator.php');
   require ('Database.php');
 
@@ -36,7 +36,6 @@
         return;
       } else {
         $database = new Database();
-        $databaseErrors = $database->createUser($_POST);
 
         $user = $database->findUser($_POST["login"]);
 
@@ -58,10 +57,6 @@
 
         return http_response_code(200);
       }
-
-    }
-
-    public function logout () {
 
     }
 

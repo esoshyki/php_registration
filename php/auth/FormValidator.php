@@ -1,4 +1,5 @@
 <?php
+  require('./security/disableGetRequest.php');
   class FormValidator {
     private $errors = [];
 

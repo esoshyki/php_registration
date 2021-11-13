@@ -1,5 +1,5 @@
 <?php
-
+require('./security/disableGetRequest.php');
 class User {
   public $userName;
   public $login;

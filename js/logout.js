@@ -8,7 +8,6 @@ const logout = async () => {
   });
 
   if (response.status === 200) {
-    console.log(await response.text());
     logoutFormControl.redirect({
       time: 3, path: "/home"
     })

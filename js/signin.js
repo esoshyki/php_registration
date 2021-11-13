@@ -15,17 +15,13 @@ const signin = async (form) => {
     body: new FormData(form)
   });
 
-  console.log(response.status);
   if (response.status === 200) {
     signinFormControl.showSuccess("Logged in");
-
-    signinFormControl.redirect({
-      time: 3, path: "/home"
-    });
     return;
   }
 
   const errors =await response.json(); 
+
 
   if (response.status === 400) {
     return signinFormControl.showErrors(errors);

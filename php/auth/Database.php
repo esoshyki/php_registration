@@ -1,6 +1,7 @@
 <?php
   require('User.php');
-
+  require('./security/disableGetRequest.php');
+  
   class Database {
     private $errors = [];
     private $dbfile = "./users.json";
