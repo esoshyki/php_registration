@@ -26,15 +26,15 @@
         $this->addError("database", "Error on saving database file");
       }
       return $this->errors;
-      
     }
+
     public function deleteUser($login, $email) {
-      // $users = $this->getUsers();
-      // $newUsers = array_filter($users, function ($user) use($login, $email)) {
-      //   return $user->login !== $login && $user->email !== $email;
-      // };
-      // $jsonData = json_encode($users);
-      // return file_put_contents('./users.json', $jsonData);    
+      $users = $this->getUsers();
+      $newUsers = array_filter($users, function ($user) use ($login, $email) {
+        return ($user->login !== $login) && ($user->email !== $email);
+      });
+      $jsonData = json_encode($users);
+      return file_put_contents('./users.json', $jsonData);    
     }
 
     public function findUser($login) {

@@ -9,7 +9,7 @@
     echo '<h1>Sign</h1>';
     ?>
     <main>
-      <form id="signin-form" >
+      <form id="signin-form" action="#" >
 
         <div class="mb-3">
           <label for="loginInput" class="form-label">Login</label>
@@ -30,7 +30,7 @@
         <div class="alert alert-success hidden" role="alert"></div>
         <div class="alert alert-danger submit_error hidden" role="alert"></div>
 
-      </form>
+      </form onsubmit="()=> {console.log('sdads')}">
       <div class="redirect_timer"></div>
     </main>
   </div>
