@@ -16,6 +16,13 @@
     а в ней файлик **disableGetRequest.php**. Там я проверяю **HTTP_SEC_FETCH_MODE**. По идее, fetch запросы наши приходят с 
     одного origin, значит значение **HTTP_SEC_FETCH_MODE** должно быть **no-cors** иначе, выходим из выполнения.
 
+ * Сохранение состояния авторизации я сделал просто добавил **userName** и **userEmail** в **_$SESSION**;
+  В принципе [ТУТ ТАК МОЖНО )](https://htmlacademy.ru/tutorial/php/sessions-cookies)
+
+  * В **.htaccess** закрыт доступ к json файлам а также настроен убраны окончания **.php** со странци.
+
+
+
   
 
 
