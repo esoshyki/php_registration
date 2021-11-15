@@ -3,7 +3,8 @@
   class FormValidator {
     private $errors = [];
 
-    public function checkSignUpData ($formData) {
+    public function checkSignUpData ($formData) 
+    {
       $password = $formData['password'] ?? NULL;
       $confirmPassword = $formData['confirmPassword'] ?? NULL;
       $login = $formData['login'] ?? NULL;
@@ -19,7 +20,8 @@
       return $this->errors;
     }
 
-    public function checkSignInData ($formData) {
+    public function checkSignInData ($formData) 
+    {
       $login = $formData['login'] ?? NULL;
       $password = $formData['password'] ?? NULL;
 
@@ -29,7 +31,8 @@
       return $this->errors;
     }
 
-    private function checkPassword ($password) {
+    private function checkPassword ($password) 
+    {
       if (!$password) {
         return $this->addError("password", "Password is require field");
       }
@@ -46,10 +49,10 @@
       if (!preg_match('/(?=.{6,})/', $password)) {
         $this->addError('password', 'Login must consist of at least six symbols.');
       }
-
     }
 
-    private function checkConfirmPassport ($confirmPassword, $password) {
+    private function checkConfirmPassport ($confirmPassword, $password) 
+    {
       if (!$confirmPassword) {
         return $this->addError("confirmPassword", "Confirm passport is require field");
       }
@@ -60,7 +63,8 @@
       }
     }
 
-    private function checkLogin ($login) {
+    private function checkLogin ($login) 
+    {
       if (!$login) {
         return $this->addError('login', "Login is required field");
       }
@@ -69,7 +73,8 @@
       }
     }
 
-    private function checkEmail ($email) {
+    private function checkEmail ($email) 
+    {
       if (!$email) {
         return $this->addError('email', "Email is required field");
       }
@@ -79,7 +84,8 @@
       }
     }
 
-    private function checkUserName ($userName) {
+    private function checkUserName ($userName) 
+    {
       if (!$userName) {
         return $this->addError('userName', "Name is required field");
       }
@@ -93,7 +99,8 @@
       }
     }
 
-    private function addError ($type, $message) {
+    private function addError ($type, $message) 
+    {
       $error = array(
         "type" => $type,
         "message" => $message

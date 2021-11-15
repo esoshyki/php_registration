@@ -6,14 +6,16 @@ class User {
   public $email;
   private $password;
 
-  public function __construct($userData) {
+  public function __construct($userData) 
+  {
     $this->userName = $userData['userName'];
     $this->login = $userData['login'];
     $this->email = $userData['email'];
     $this->password = $userData['password'];
   }
 
-  public function getUserData() {
+  public function getUserData() 
+  {
     $userData = array(
       "userName" => $this->userName,
       "login" => $this->login,

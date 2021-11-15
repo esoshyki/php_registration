@@ -6,7 +6,8 @@
     private $errors = [];
     private $dbfile = "./users.json";
     
-    public function createUser ($userData) {
+    public function createUser ($userData) 
+    {
       $newUser = new User($userData);
       $newUserData = $newUser->getUserData();
       [ "login" => $login , "email" => $email ] = $newUserData;
@@ -28,7 +29,8 @@
       return $this->errors;
     }
 
-    public function deleteUser($login, $email) {
+    public function deleteUser($login, $email) 
+    {
       $users = $this->getUsers();
       $newUsers = array_filter($users, function ($user) use ($login, $email) {
         return ($user->login !== $login) && ($user->email !== $email);
@@ -37,7 +39,8 @@
       return file_put_contents('./users.json', $jsonData);    
     }
 
-    public function findUser($login) {
+    public function findUser($login) 
+    {
       $users = $this->getUsers();
       
       $findedUsers = array_filter($users, function($user) use ($login) {
@@ -51,7 +54,8 @@
       }
     }
 
-    public function updateUser($newUserData) {
+    public function updateUser($newUserData) 
+    {
       $users = $this->getUsers();
       [
         "login" => $login,
@@ -66,13 +70,14 @@
       return file_put_contents('./users.json', $jsonData);    
     }
 
-    private function getUsers() {
+    private function getUsers() 
+    {
       $users = json_decode(file_get_contents($this->dbfile, TRUE));
       return $users;
     }
 
-    private function findUserIndex($users, $login, $email) {
-
+    private function findUserIndex($users, $login, $email) 
+    {
       foreach ($users as $key => $user) {
         if ($user->login === $login || $user->email === $email) {
           return $key;
@@ -81,7 +86,8 @@
       return NULL;
     }
 
-    private function addError ($type, $message) {
+    private function addError ($type, $message) 
+    {
       $error = array(
         "type" => $type,
         "message" => $message

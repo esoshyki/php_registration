@@ -6,7 +6,8 @@
   class Auth {
     private $errors = [];
 
-    public function signUp () {
+    public function signUp () 
+    {
       $validator = new FormValidator();
       $validateErrors = $validator->checkSignUpData($_POST);
 
@@ -27,7 +28,8 @@
       }
     }
 
-    public function signIn () {
+    public function signIn () 
+    {
       $validator = new FormValidator();
       $validateErrors = $validator->checkSignInData($_POST);
       if (count($validateErrors) > 0) {
@@ -57,10 +59,10 @@
 
         return http_response_code(200);
       }
-
     }
 
-    private function addError ($type, $message) {
+    private function addError ($type, $message) 
+    {
       $error = array(
         "type" => $type,
         "message" => $message
