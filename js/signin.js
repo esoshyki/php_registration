@@ -1,11 +1,9 @@
-const form = document.getElementById("form");
-
-const fields = [
+const SIGNIN_FIELDS = [
   "login",
   "password",
 ];
 
-const signinFormControl = new FormControl(fields);
+const signinFormControl = new FormControl(SIGNIN_FIELDS);
 
 const signin = async (form) => {
 

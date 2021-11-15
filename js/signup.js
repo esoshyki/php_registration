@@ -1,5 +1,5 @@
 
-const signupFields = [
+const SIGNUP_FIELDS = [
   "login",
   "password",
   "confirm_password",
@@ -7,7 +7,7 @@ const signupFields = [
   "name"
 ];
 
-const signupFormControl = new FormControl(signupFields);
+const signupFormControl = new FormControl(SIGNUP_FIELDS);
 
 const signup = async (form) => {
 
