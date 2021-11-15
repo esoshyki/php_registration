@@ -1,6 +1,5 @@
 <?php
   require('./security/disableGetRequest.php');
-  $headers = getallheaders();
 
   require ('./auth/Auth.php');
 
