@@ -21,7 +21,7 @@ const signin = async (form) => {
   }
 
   const errors =await response.json(); 
-
+  console.log(errors);
 
   if (response.status === 400) {
     return signinFormControl.showErrors(errors);

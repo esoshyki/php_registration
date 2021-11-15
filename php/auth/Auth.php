@@ -39,23 +39,23 @@
       } else {
         $database = new Database();
 
-        $user = $database->findUser($_POST["login"]);
+        $foundUser = $database->findUser($_POST['login']);
 
-        if (!$user) {
+        if (!isset($foundUser)) {
           http_response_code(404);
           $this->addError("login", "User not found");
           echo json_encode($this->errors);
           return;
         }
 
-        if (!password_verify($_POST["password"], $user->password)) {
+        if (!password_verify($_POST["password"], $foundUser->password)) {
           $this->addError("password", "Incorrect password");
           echo json_encode($this->errors);
           return;
         }
 
-        $_SESSION["userName"] = $user->userName;
-        $_SESSION["userLogin"] = $user->login;
+        $_SESSION['userName'] = $foundUser->userName;
+        $_SESSION['userLogin'] = $foundUser->login;
 
         return http_response_code(200);
       }

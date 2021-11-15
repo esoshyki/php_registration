@@ -42,15 +42,15 @@
     public function findUser($login) 
     {
       $users = $this->getUsers();
-      
+
       $findedUsers = array_filter($users, function($user) use ($login) {
-        return $user->login === "$login";
+        return $user->login === $login;
       });
 
       if (count($findedUsers) === 0) {
         return NULL;
       } else {
-        return $findedUsers[0];
+        return array_values($findedUsers)[0];
       }
     }
 
@@ -72,7 +72,7 @@
 
     private function getUsers() 
     {
-      $users = json_decode(file_get_contents($this->dbfile, TRUE));
+      $users = json_decode(file_get_contents($this->dbfile));
       return $users;
     }
 

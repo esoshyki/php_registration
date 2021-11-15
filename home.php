@@ -8,7 +8,7 @@
     ?>
     <main>
     <div class="user-container">
-      <?  if(!isset($_SESSION['userName'])) { ?>
+      <?php  if(!isset($_SESSION['userName'])) { ?>
         <h1>Hello. Please sign</h1>
       <?  } ?>
       <?php 
